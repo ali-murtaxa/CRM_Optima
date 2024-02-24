@@ -33,12 +33,14 @@ def Register_user(request):
     form=SignUpForm()
     if request.method=='POST':
         form=SignUpForm(request.POST)
+        password1=request.POST['password1']
+        password2=request.POST['password2']
         if form.is_valid():
             form.save()
             messages.success(request,'You have successfully Registered!')
             return redirect('home')
-        else:
-            messages.success(request,'You have not entered correct details for Registered!')
+        elif password1!= password2:
+            messages.success(request,'Your password and confirm password are not same!')
             return redirect('Register')
     else:
         form=SignUpForm()

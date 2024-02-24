@@ -8,7 +8,7 @@
     <form action="{% url 'Register' %}" method="post">
         {% csrf_token %}
     {{form}}
-        
+        <br>
         <button type="submit" class="btn btn-secondary">Register</button>
     </form>
 </div>
